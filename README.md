@@ -9,5 +9,4 @@ Pagina gestora de ventas en linea de articulos variados
 4. php artisan ket:generate
 
 # Autores
-
 - Alejandro Aguilar

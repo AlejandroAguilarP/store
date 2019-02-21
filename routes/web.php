@@ -15,13 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/info', function()
-{
-  return view('paginas/informacion');
-});
+Route::get('/info', 'PaginasController@info');
 
+Route::get('/contacto', 'PaginasController@contacto');
 
-Route::get('/contacto', function()
-{
-  return view('paginas.contacto');
-});
+Route::get('/bienvenida/{nombre}/{apellido?}', 'PaginasController@bienvenida');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

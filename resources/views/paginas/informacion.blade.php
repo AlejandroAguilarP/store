@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="s" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Info</title>
-  </head>
-  <body>
-    <h1>informacion</h1>
+@extends('layouts.app')
 
-  </body>
-</html>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">informacion</div>
+
+                <div class="card-body">
+
+
+                    Store
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

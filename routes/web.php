@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/equipo', 'PaginasController@equipo')->name('equipo');
 
 Route::get('/info', 'PaginasController@info');
 

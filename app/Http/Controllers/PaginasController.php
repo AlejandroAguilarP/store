@@ -23,4 +23,9 @@ class PaginasController extends Controller
    {
      return view('paginas.contacto');
    }
+
+   public function equipo()
+   {
+     return view('paginas.equipo');
+   }
 }

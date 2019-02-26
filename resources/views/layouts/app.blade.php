@@ -33,7 +33,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li>
+                          <a class="nav-link" href="{{action ('PaginasController@info')}}">Informacion</a>
+                        </li>
+                        <li>
+                          <a class="nav-link"href="/contacto">Contacto</a>
+                        </li>
+                        <li>
+                          <a class="nav-link"href="{{route ('equipo')}}">Equipo</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

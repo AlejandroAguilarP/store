@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-8 offset-2">
-    <table class="table table-striped table-dark">
+    <table class="table table-striped table-dark table-hover">
       <thead>
       <tr>
         <th scope="col">Nombre</th>

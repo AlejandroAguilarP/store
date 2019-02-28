@@ -8,8 +8,6 @@
                 <div class="card-header">informacion</div>
 
                 <div class="card-body">
-
-
                     Store
                 </div>
             </div>

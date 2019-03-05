@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreaTablaProductos extends Migration
+class CreaTablaProveedor extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreaTablaProductos extends Migration
      */
     public function up()
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('proveedor', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->integer('precio');
+            $table->string('RFC');
             $table->timestamps();
+
+          //  $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -29,6 +31,6 @@ class CreaTablaProductos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('proveedor');
     }
 }

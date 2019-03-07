@@ -13,7 +13,7 @@ class CreaTablaVenta extends Migration
      */
     public function up()
     {
-        Schema::create('venta', function (Blueprint $table) {
+        Schema::create('ventas', function (Blueprint $table) {
           $table->increments('id');
           $table->unsignedInteger('user_id');
           $table->DateTime('fecha_realizada');

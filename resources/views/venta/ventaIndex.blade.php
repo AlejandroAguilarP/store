@@ -4,8 +4,7 @@
 <div class="row">
 
   <div class="col-8 offset-2">
-    <h1>Ventas</h1>
-
+    <h1>Ventas de {{ session('apodo')}}</h1>
     <table class="table table-hover">
       <thead>
         <tr>

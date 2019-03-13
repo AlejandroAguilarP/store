@@ -15,12 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/inicio', function () {
+    return view('inicio');
+});
+
 Route::get('/ventas', 'VentasController@index')->name('ventas.index');
 Route::get('/equipo', 'PaginasController@equipo')->name('equipo');
 
-Route::get('/info', 'PaginasController@info');
+Route::get('/info', 'PaginasController@info')->name('info');
 
-Route::get('/contacto', 'PaginasController@contacto');
+Route::get('/contacto', 'PaginasController@contacto')->name('contacto');
 
 Route::get('/bienvenida/{nombre}/{apellido?}', 'PaginasController@bienvenida');
 

@@ -159,6 +159,16 @@
               </a>
             </div>
           </li>
+          @guest
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+              @if (Route::has('register'))
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                  </li>
+              @endif
+          @else
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">{{ Auth::user()->nombre }} </span>
@@ -178,20 +188,18 @@
                   </div>
                 </div>
               </a>
-              <a class="dropdown-item mt-2">
-                Manage Accounts
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
               </a>
-              <a class="dropdown-item">
-                Change Password
-              </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
             </div>
           </li>
+          @endguest
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="mdi mdi-menu"></span>
@@ -205,8 +213,9 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+            @yield ('contenido')
         </div>
-        @yield ('contenido')
+
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018

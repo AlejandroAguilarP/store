@@ -8,11 +8,9 @@
           </div>
           <div class="text-wrapper">
             <p class="profile-name"><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-           {{ Auth::user()->nombre }}  <span class="caret"></span>
+           {{ session('apodo')}}  <span class="caret"></span>
             </a></p>
             <div>
-              <small class="designation text-muted">Manager</small>
-              <span class="status-indicator online"></span>
             </div>
           </div>
         </div>

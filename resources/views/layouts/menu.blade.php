@@ -43,6 +43,23 @@
       </div>
     </li>
     <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#productos" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-content-copy"></i>
+        <span class="menu-title">Productos</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="productos">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('productos.create')}}">Agregar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('productos.index')}}">Ver</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="{{route ('info')}}">
         <i class="menu-icon mdi mdi-backup-restore"></i>
         <span class="menu-title">Informacion</span>

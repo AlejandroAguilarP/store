@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.star')
 
-@section('content')
+@section('contenido')
 <form class="offset-1 col-9">
   <div class="form-row">
     <div class="form-group col-md-6">

@@ -1,34 +1,17 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-profile">
-      <div class="nav-link">
-        <div class="user-wrapper">
-          <div class="profile-image">
-            <img src="{{ asset ('images/faces/face1.jpg')}}" alt="profile image">
-          </div>
-          <div class="text-wrapper">
-            <p class="profile-name"><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-           {{ session('apodo')}}  <span class="caret"></span>
-            </a></p>
-            <div>
-            </div>
-          </div>
-        </div>
-        <button class="btn btn-success btn-block">New Project
-          <i class="mdi mdi-plus"></i>
-        </button>
-      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{route ('equipo')}}">
-        <i class="menu-icon mdi mdi-television"></i>
+        <i class="menu-icon mdi mdi-code-array"></i>
         <span class="menu-title">Equipo</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-content-copy"></i>
-        <span class="menu-title">Basic UI Elements</span>
+        <span class="menu-title">Basic Elements</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
@@ -44,8 +27,8 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#productos" aria-expanded="false" aria-controls="ui-basic">
-        <i class="menu-icon mdi mdi-content-copy"></i>
-        <span class="menu-title">Productos</span>
+        <i class="menu-icon mdi mdi-archive"></i>
+        <span class="menu-title">Pro</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="productos">
@@ -61,13 +44,13 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{route ('info')}}">
-        <i class="menu-icon mdi mdi-backup-restore"></i>
+        <i class="menu-icon mdi mdi-information-outline"></i>
         <span class="menu-title">Informacion</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{route ('contacto')}}">
-        <i class="menu-icon mdi mdi-chart-line"></i>
+        <i class="menu-icon mdi mdi-send"></i>
         <span class="menu-title">Contacto</span>
       </a>
     </li>

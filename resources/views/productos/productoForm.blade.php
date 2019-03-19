@@ -1,8 +1,6 @@
 @extends('layouts.star')
 
 @section('contenido')
-<div class="main-panel">
-        <div class="content-wrapper">
           <div class="row">
             <div class="col-md-8 d-flex align-items-stretch grid-margin">
               <div class="row flex-grow">
@@ -36,6 +34,4 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
 @endsection

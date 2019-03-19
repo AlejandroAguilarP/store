@@ -1,7 +1,6 @@
-@extends ('layouts.app')
+@extends('layouts.star')
 
-
-@section('content')
+@section('contenido')
 
 <div class="row">
   <div class="col-8 offset-2">

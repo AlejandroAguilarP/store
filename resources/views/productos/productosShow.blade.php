@@ -4,9 +4,9 @@
    <div class="col-lg-12 stretch-card">
       <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Listado de productos</h4>
+            <h4 class="card-title">Detalle producto</h4>
             <p class="card-description">
-                 Articulos
+
             </p>
           <div class="table-responsive">
            <table class="table table-hover">
@@ -20,17 +20,21 @@
                </tr>
              </thead>
              <tbody>
-                     @foreach ($productos as $producto)
                        <tr>
                          <td>{{ $producto->id}}</td>
                          <td>{{ $producto->nombre}}</td>
                          <td>{{ $producto->descripcion}}</td>
                          <td>${{ $producto->precio}}</td>
                          <td>
-                           <a class= " btn btn-outline-success" href="{{route ('productos.show', $producto->id)}}">Detalle</a>
+                           <a class="btn btn-outline-warning" href="{{ route ('productos.edit', $producto->id)}}">Editar</a>
+                           <form class="forms-sample" action="{{route('productos.destroy', $producto->id )}}" method="post">
+                             <input type="hidden" name="_method" value="DELETE">
+                            @csrf
+                           <button class="btn btn-outline-danger" name="button"> Borrar</button>
+                           </form>
                          </td>
+
                        </tr>
-                     @endforeach
                    </tbody>
          </table>
         </div>

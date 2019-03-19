@@ -11,22 +11,26 @@
                       <p class="card-description">
                         Agregue sus productos
                       </p>
-                      <form  action="{{route('productos.store')}}" method="post" class="forms-sample">
+                      @if(isset($producto))
+                        <form  action="{{route('productos.update', $producto->id)}}" method="post" class="forms-sample">
+                          <input type="hidden" name="_method" value="PATCH">
+                      @else
+                        <form  action="{{route('productos.store')}}" method="post" class="forms-sample">
+                      @endif
                         @csrf
                         <div class="form-group">
                           <label for="nombre">Producto</label>
-                          <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                          <input type="text" class="form-control" name="nombre" value="{{ $producto->nombre ?? ''}}" placeholder="Nombre">
                         </div>
                         <div class="form-group">
                           <label for="descripcion">Descripcion</label>
-                          <input type="text" class="form-control" name="descripcion" placeholder="Descripcion">
+                          <input type="text" class="form-control" name="descripcion" value="{{ $producto->descripcion ?? ''}}"placeholder="Descripcion">
                         </div>
                         <div class="form-group">
                           <label for="precio">Precio</label>
-                          <input type="number" class="form-control" name="precio" placeholder="$1000">
+                          <input type="number" class="form-control" name="precio" value="{{ $producto->precio ?? ''}}" placeholder="$1000">
                         </div>
-                        <button type="submit" class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <button type="submit" class="btn btn-success mr-2">Aceptar</button>
                       </form>
                     </div>
                   </div>

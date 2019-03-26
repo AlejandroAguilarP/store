@@ -9,6 +9,7 @@
           <div class="card-body">
             <h4 class="card-title">Contactenos</h4>
             <form class="form-samples">
+              @csrf
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail">Email</label>

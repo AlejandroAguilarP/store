@@ -37,6 +37,11 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+        'nombre' => 'required|max:255',
+        'descripcion' => 'required|max:10',
+        'precio' => 'required'
+      ]);
         //
         //dd($request->all());
         $pro = new Producto();
@@ -81,6 +86,11 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
+      $request->validate([
+        'nombre' => 'required|max:255',
+        'descripcion' => 'required|max:10',
+        'precio' => 'required'
+      ]);
         //
         $producto->nombre = $request->input('nombre');
         $producto->descripcion = $request->descripcion;

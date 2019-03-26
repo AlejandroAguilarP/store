@@ -13,6 +13,7 @@
 
 
 Route::resource('productos', 'ProductoController');
+Route::resource('compras', 'CompraController');
 
 Route::get('/', function () {
     return view('welcome');

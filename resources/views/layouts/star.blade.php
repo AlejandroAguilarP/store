@@ -41,11 +41,11 @@
           </li>
           <li class="nav-item active">
             <a href="#" class="nav-link">
-              <i class="mdi mdi-elevation-rise"></i>Reports</a>
+              <i class="mdi mdi-elevation-rise"></i>Reportes</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
+              <i class="mdi mdi-bookmark-plus-outline"></i>Inventario</a>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">

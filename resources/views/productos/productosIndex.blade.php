@@ -27,7 +27,7 @@
                          <td>{{ $producto->descripcion}}</td>
                          <td>${{ $producto->precio}}</td>
                          <td>
-                           <a class= " btn btn-outline-success" href="{{route ('productos.show', $producto->id)}}">Detalle</a>
+                           <a class= "btn btn-inverse-success btn-rounded btn-fw" href="{{route ('productos.show', $producto->id)}}">Detalle</a>
                          </td>
                        </tr>
                      @endforeach

@@ -30,7 +30,7 @@
                           <label for="precio">Precio</label>
                           <input type="number" class="form-control" name="precio" value="{{ $producto->precio ?? ''}}" placeholder="$1000">
                         </div>
-                        <button type="submit" class="btn btn-success mr-2">Aceptar</button>
+                        <button type="submit" class="btn btn-inverse-success btn-rounded btn-fw">Aceptar</button>
                       </form>
                     </div>
                   </div>

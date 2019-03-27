@@ -26,11 +26,12 @@
                          <td>{{ $producto->descripcion}}</td>
                          <td>${{ $producto->precio}}</td>
                          <td>
-                           <a class="btn btn-outline-warning" href="{{ route ('productos.edit', $producto->id)}}">Editar</a>
+                           <a class="btn btn-inverse-warning btn-rounded btn-fw" href="{{ route ('productos.edit', $producto->id)}}">Editar</a>
                            <form class="forms-sample" action="{{route('productos.destroy', $producto->id )}}" method="post">
                              <input type="hidden" name="_method" value="DELETE">
                             @csrf
-                           <button class="btn btn-outline-danger" name="button"> Borrar</button>
+                            <br>
+                           <button class="btn btn-inverse-danger btn-rounded btn-fw" name="button"> Borrar</button>
                            </form>
                          </td>
 

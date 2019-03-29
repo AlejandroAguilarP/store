@@ -14,8 +14,10 @@
                <tr>
                  <th>Id</th>
                  <th>Usuario</th>
-                 <th>Total</th>
-                  <th>Nombre</th>
+                  <th>Nombre User</th>
+                  <th>id Proveedor</th>
+                  <th>Nombre Proveedor</th>
+                  <th>Total</th>
                </tr>
              </thead>
              <tbody>
@@ -23,8 +25,10 @@
                        <tr>
                          <td>{{ $compra->id}}</td>
                          <td>{{ $compra->user_id}}</td>
-                         <td>{{ $compra->total}}</td>
                          <td>{{ $compra->user->nombre}} </td>
+                         <td>{{ $compra->proovedor_id}}</td>
+                         <td>{{ $compra->proovedor->nombre}} </td>
+                         <td>${{ $compra->total}}</td>
                        </tr>
                      @endforeach
                    </tbody>

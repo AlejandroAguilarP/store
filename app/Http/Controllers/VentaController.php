@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Compra;
-use App\Proovedor;
+use App\Venta;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CompraController extends Controller
+class VentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class CompraController extends Controller
      */
     public function index()
     {
-        $compras = Compra::all();
-        return view('compras.compraIndex', compact('compras'));
+        //
     }
 
     /**
@@ -28,8 +25,6 @@ class CompraController extends Controller
     public function create()
     {
         //
-        $pro = Proovedor::all();
-        return view('compras.compraForm',compact('pro'));
     }
 
     /**
@@ -41,27 +36,15 @@ class CompraController extends Controller
     public function store(Request $request)
     {
         //
-        $compra = new Compra;
-        $compra->user_id = Auth::id();
-        $compra->proovedor_id = $request->proveedor;
-        $compra->articulo_id = $request->articulo;
-        $compra->fecha_realizada = \Carbon\Carbon::now();
-        $compra->descripcion = $request->descripcion;
-        $compra->total = $request->total;
-
-        $compra->save();
-
-
-        return redirect()->route('compras.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Compra  $compra
+     * @param  \App\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function show(Compra $compra)
+    public function show(Venta $venta)
     {
         //
     }
@@ -69,10 +52,10 @@ class CompraController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Compra  $compra
+     * @param  \App\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Compra $compra)
+    public function edit(Venta $venta)
     {
         //
     }
@@ -81,10 +64,10 @@ class CompraController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Compra  $compra
+     * @param  \App\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Compra $compra)
+    public function update(Request $request, Venta $venta)
     {
         //
     }
@@ -92,10 +75,10 @@ class CompraController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Compra  $compra
+     * @param  \App\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Compra $compra)
+    public function destroy(Venta $venta)
     {
         //
     }

@@ -43,6 +43,23 @@
       </div>
     </li>
     <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#proovedors" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-bike"></i>
+        <span class="menu-title">Proveedores</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="proovedors">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('proovedors.create')}}">Agregar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('proovedors.index')}}">Ver</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="{{route ('info')}}">
         <i class="menu-icon mdi mdi-information-outline"></i>
         <span class="menu-title">Informacion</span>

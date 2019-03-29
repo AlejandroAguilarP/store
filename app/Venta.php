@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Compra extends Model
+class Venta extends Model
 {
     //
-
     public function user()
     {
       return $this->belongsTo(User::class);
@@ -16,8 +15,8 @@ class Compra extends Model
     {
       return $this->belongsTo(Producto::class);
     }
-    public function proovedor()
+    public function cliente()
     {
-      return $this->belongsTo(Proovedor::class);
+      return $this->belongsTo(Cliente::class);
     }
 }

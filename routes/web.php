@@ -14,7 +14,8 @@
 
 Route::resource('productos', 'ProductoController');
 Route::resource('compras', 'CompraController');
-
+Route::resource('ventas', 'VentaController');
+Route::resource('proovedors', 'ProovedorController');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,8 +23,6 @@ Route::get('/', function () {
 Route::get('/inicio', function () {
     return view('inicio');
 });
-
-Route::get('/ventas', 'VentasController@index')->name('ventas.index');
 Route::get('/equipo', 'PaginasController@equipo')->name('equipo');
 
 Route::get('/info', 'PaginasController@info')->name('info');

@@ -86,6 +86,7 @@
 
                 <div class="links">
                     <a href="{{ route('ventas.index')}}">Ventas</a>
+                    <a href="{{ route('compras.index')}}">Compras</a>
                     <a href="{{ route('productos.index')}}">Productos</a>
                 </div>
             </div>

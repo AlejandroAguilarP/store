@@ -9,18 +9,18 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <i class="menu-icon mdi mdi-content-copy"></i>
-        <span class="menu-title">Basic Elements</span>
+      <a class="nav-link" data-toggle="collapse" href="#ventas" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-clock-fast"></i>
+        <span class="menu-title">Ventas</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="ui-basic">
+      <div class="collapse" id="ventas">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="#">Buttons</a>
+            <a class="nav-link" href="{{route ('ventas.create')}}">Agregar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Typography</a>
+            <a class="nav-link" href="{{route ('ventas.index')}}">Ver</a>
           </li>
         </ul>
       </div>
@@ -55,6 +55,23 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route ('proovedors.index')}}">Ver</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#compras" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-shopping"></i>
+        <span class="menu-title">Compras</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="compras">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('compras.create')}}">Agregar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('compras.index')}}">Ver</a>
           </li>
         </ul>
       </div>

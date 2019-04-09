@@ -11,12 +11,12 @@ class Venta extends Model
     {
       return $this->belongsTo(User::class);
     }
-    public function producto()
+  /*  public function producto()
     {
       return $this->belongsTo(Producto::class);
     }
     public function cliente()
     {
       return $this->belongsTo(Cliente::class);
-    }
+    }*/
 }

@@ -15,6 +15,7 @@ class VentaController extends Controller
     public function index()
     {
         //
+        return view('#');
     }
 
     /**
@@ -25,6 +26,7 @@ class VentaController extends Controller
     public function create()
     {
         //
+        return view('#');
     }
 
     /**

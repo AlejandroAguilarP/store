@@ -4,7 +4,7 @@
    <div class="col-lg-12 stretch-card">
       <div class="card">
           <div class="card-body">
-            <h4 class="card-title">aCCIONES DE PROOVEDOR</h4>
+            <h4 class="card-title">ACCIONES DE PROOVEDOR</h4>
             <p class="card-description">
 
             </p>
@@ -21,13 +21,13 @@
              </thead>
              <tbody>
                        <tr>
-                         <td>{{ $proveedor->id}}</td>
-                         <td>{{ $proveedor->nombre}}</td>
-                         <td>{{ $proveedor->codigo}}</td>
-                         <td>{{ $proveedor->email}}</td>
+                         <td>{{ $proovedor->id}}</td>
+                         <td>{{ $proovedor->nombre}}</td>
+                         <td>{{ $proovedor->codigo}}</td>
+                         <td>{{ $proovedor->email}}</td>
                          <td>
-                           <a class="btn btn-inverse-warning btn-rounded btn-fw" href="{{ route ('proovedors.edit', $proveedor->id)}}">Editar</a>
-                           <form class="forms-sample" action="{{route('proovedors.destroy', $proveedor->id )}}" method="post">
+                           <a class="btn btn-inverse-warning btn-rounded btn-fw" href="{{ route ('proovedors.edit', $proovedor->id)}}">Editar</a>
+                           <form class="forms-sample" action="{{route('proovedors.destroy', $proovedor->id )}}" method="post">
                              <input type="hidden" name="_method" value="DELETE">
                             @csrf
                             <br>

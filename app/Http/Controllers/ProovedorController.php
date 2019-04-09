@@ -45,7 +45,7 @@ class ProovedorController extends Controller
           'email' => ['required', 'string', 'email', 'max:255', 'unique:proovedors']
         ]);
 
-
+        /*
 
         $prov = new Proovedor();
         $prov->nombre = $request->input('nombre');
@@ -53,11 +53,17 @@ class ProovedorController extends Controller
         $prov->email = $request->email;
 
         $prov->save();
+        */
 
-        return redirect()->route('proovedors.index');
+        Proovedor::create($request->all());
+        return redirect()->route('proovedors.index')->with([
+                  'mensaje' => 'Nuevo proveedor agregado',
+                  'alert-class' => 'alert-warning',
+              ]);
 
 
     }
+
 
     /**
      * Display the specified resource.
@@ -68,6 +74,7 @@ class ProovedorController extends Controller
     public function show(Proovedor $proovedor)
     {
         //
+        return view('proveedor.proveedorShow', compact('proovedor'));
     }
 
     /**
@@ -79,6 +86,7 @@ class ProovedorController extends Controller
     public function edit(Proovedor $proovedor)
     {
         //
+        return view('proveedor.proveedorForm', compact('proovedor'));
     }
 
     /**
@@ -90,7 +98,23 @@ class ProovedorController extends Controller
      */
     public function update(Request $request, Proovedor $proovedor)
     {
+      $request->validate([
+        'nombre' => 'required|max:255',
+        'codigo' => 'required|max:10',
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:proovedors']
+      ]);
         //
+
+        $proovedor->nombre = $request->input('nombre');
+        $proovedor->email = $request->email;
+        $proovedor->codigo = $request->codigo;
+
+        $proovedor->save();
+
+        return redirect()->route('proovedors.show', compact('proovedor'))->with([
+                  'mensaje' => 'Proveedor actualizado',
+                  'alert-class' => 'alert-warning',
+              ]);
     }
 
     /**
@@ -102,5 +126,10 @@ class ProovedorController extends Controller
     public function destroy(Proovedor $proovedor)
     {
         //
+        $proovedor->delete();
+        return redirect()->route('proovedors.index')->with([
+                  'mensaje' => 'Proveedor eliminado',
+                  'alert-class' => 'alert-warning',
+              ]);
     }
 }

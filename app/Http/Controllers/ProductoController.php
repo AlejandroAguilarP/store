@@ -39,7 +39,7 @@ class ProductoController extends Controller
     {
       $request->validate([
         'nombre' => 'required|max:255',
-        'descripcion' => 'required|max:10',
+        'descripcion' => 'required|max:100',
         'precio' => 'required'
       ]);
         //
@@ -51,7 +51,10 @@ class ProductoController extends Controller
 
         $pro->save();
 
-        return redirect()->route('productos.index');
+        return redirect()->route('productos.index')->with([
+                  'mensaje' => 'Producto añadido con exito',
+                  'alert-class' => 'alert-warning',
+              ]);
     }
 
     /**
@@ -73,7 +76,7 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        return view('productos.productoFOrm', compact('producto'));
+        return view('productos.productoForm', compact('producto'));
         //
     }
 
@@ -88,7 +91,7 @@ class ProductoController extends Controller
     {
       $request->validate([
         'nombre' => 'required|max:255',
-        'descripcion' => 'required|max:10',
+        'descripcion' => 'required|max:100',
         'precio' => 'required'
       ]);
         //
@@ -98,7 +101,10 @@ class ProductoController extends Controller
 
         $producto->save();
 
-        return view('productos.productosShow', compact('producto'));
+        return redirect()->route('productos.show', compact('producto'))->with([
+                  'mensaje' => 'Producto actualizado',
+                  'alert-class' => 'alert-warning',
+              ]);
 
     }
 
@@ -110,8 +116,11 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->compras()->detach();
         $producto->delete();
-        return redirect()->route('productos.index');
+        return redirect()->route('productos.index')->with([
+                  'mensaje' => 'Producto eliminado',
+                  'alert-class' => 'alert-warning',
+              ]);
     }
 }

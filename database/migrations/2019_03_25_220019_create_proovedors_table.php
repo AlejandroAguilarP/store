@@ -20,6 +20,8 @@ class CreateProovedorsTable extends Migration
           $table->string('codigo',20)->unique();
           $table->timestamps();
         });
+
+
     }
 
     /**

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Compra extends Model
 {
     //
+    protected $guarded = ['id'];
 
     public function user()
     {
@@ -14,8 +15,9 @@ class Compra extends Model
     }
     public function producto()
     {
-      return $this->belongsTo(Producto::class);
+      return $this->belongsToMany(Producto::class)->withPivot('cantidad');
     }
+
     public function proovedor()
     {
       return $this->belongsTo(Proovedor::class);

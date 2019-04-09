@@ -40,11 +40,11 @@ class User extends Authenticatable
 
     public function compras()
     {
-      return $this->hasMany('Compra');
+      return $this->hasMany('App/Compra');
     }
 
     public function ventas()
     {
-      return $this->hasMany('Venta');
+      return $this->hasMany('App/Venta');
     }
 }

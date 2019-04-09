@@ -4,9 +4,9 @@
    <div class="col-lg-12 stretch-card">
       <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Listado de productos</h4>
+            <h4 class="card-title">Listado de Proveedores</h4>
             <p class="card-description">
-                 Articulos
+                 Proveedores
             </p>
           <div class="table-responsive">
            <table class="table table-hover">

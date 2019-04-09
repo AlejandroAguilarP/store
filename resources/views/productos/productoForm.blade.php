@@ -7,15 +7,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      @if ($errors->any())
-                          <div class="alert alert-danger">
-                              <ul>
-                                  @foreach ($errors->all() as $error)
-                                      <li>{{ $error }}</li>
-                                  @endforeach
-                              </ul>
-                          </div>
-                      @endif
+                      @include('partials.formErrors')
                       <h4 class="card-title">Agregar Productos</h4>
                       <p class="card-description">
                         Agregue sus productos
@@ -29,15 +21,15 @@
                         @csrf
                         <div class="form-group">
                           <label for="nombre">Producto</label>
-                          <input type="text" class="form-control" name="nombre" value="{{ $producto->nombre ?? ''}} {{ old('nombre') }}" placeholder="Nombre">
+                          <input type="text" class="form-control" name="nombre" value="{{ isset($producto) ? $producto->nombre : old('nombre') }}" placeholder="Nombre">
                         </div>
                         <div class="form-group">
                           <label for="descripcion">Descripcion</label>
-                          <input type="text" class="form-control" name="descripcion" value="{{ $producto->descripcion ?? ''}} {{ old('descripcion') }}"placeholder="Descripcion">
+                          <input type="text" class="form-control" name="descripcion" value="{{ isset($producto) ? $producto->descripcion : old('descripcion') }}"placeholder="Descripcion">
                         </div>
                         <div class="form-group">
                           <label for="precio">Precio</label>
-                          <input type="text" class="form-control" name="precio" value="{{ $producto->precio ?? ''}} {{ old('precio') }}" placeholder="$1000">
+                          <input type="text" class="form-control" name="precio" value="{{ isset($producto) ? $producto->precio : old('precio') }}" placeholder="$1000">
                         </div>
                         <button type="submit" class="btn btn-inverse-success btn-rounded btn-fw">Aceptar</button>
                       </form>

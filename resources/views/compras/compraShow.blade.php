@@ -19,15 +19,12 @@
                   <th>Proveedor</th>
                   <th>Descripcion</th>
                   <th>Total</th>
-                  <th colspan="3">Articulos</th>
+                  <th>Articulos</th>
                </tr>
              </thead>
              <tbody>
-                     @foreach ($compras as $compra)
                        <tr>
-                         <td> <a class= "btn btn-inverse-success" href="{{route ('compras.show', $compra->id)}}">{{ $compra->id}}</a>
-
-                         </td>
+                         <td>{{ $compra->id}}</td>
                         <!-- <td>{{-- $compra->user_id--}}</td>-->
                          <td>{{ $compra->fecha_realizada}}</td>
                          <td>{{ $compra->user->nombre}} </td>
@@ -36,17 +33,20 @@
                           <td>{{ $compra->total}} </td>
 
                           <td>
-                          <ul class="list-group list-group-flush">
                           @foreach ($compra->producto as $prod)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                              {{ $prod->nombre }}&nbsp;&nbsp;&nbsp;
-                              <span class="badge badge-primary badge-pill">{{ $prod->pivot->cantidad }}</span>
-                            </li>
+                            <li>{{ $prod->nombre }}</li>
                           @endforeach
                           </td>
-                        </ul>
+
+                          <td>
+                            <form class="forms-sample" action="{{route('compras.destroy', $compra->id )}}" method="post">
+                              <input type="hidden" name="_method" value="DELETE">
+                             @csrf
+                             <br>
+                            <button class="btn btn-inverse-danger btn-rounded btn-fw" name="button"> Borrar</button>
+                            </form>
+                          </td>
                        </tr>
-                     @endforeach
                    </tbody>
          </table>
         </div>

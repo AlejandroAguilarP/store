@@ -16,7 +16,7 @@ class CreateVentasTable extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('cliente_id');
+        //    $table->unsignedInteger('cliente_id');
             $table->unsignedInteger('articulo_id');
             $table->DateTime('fecha_realizada');
             $table->string('descripcion');
@@ -24,7 +24,7 @@ class CreateVentasTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('cliente_id')->references('id')->on('clientes');
+          //  $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->foreign('articulo_id')->references('id')->on('productos');
         });
     }

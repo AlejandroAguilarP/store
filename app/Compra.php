@@ -20,6 +20,6 @@ class Compra extends Model
 
     public function proovedor()
     {
-      return $this->belongsTo(Proovedor::class);
+      return $this->belongsTo(Proovedor::class)->withTrashed ();
     }
 }

@@ -126,7 +126,7 @@ class ProovedorController extends Controller
     public function destroy(Proovedor $proovedor)
     {
         //
-        $proovedor->compras()->delete();
+      //  $proovedor->compras()->delete();
         $proovedor->delete();
         return redirect()->route('proovedors.index')->with([
                   'mensaje' => 'Proveedor eliminado',

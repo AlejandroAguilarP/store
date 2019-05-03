@@ -33,7 +33,7 @@
                         <!-- <td>{{-- $compra->user_id--}}</td>-->
                          <td>{{ $compra->fecha_realizada}}</td>
                          <td>{{ $compra->user->nombre}} </td>
-                          <td>{{ $compra->proovedor->nombre}}</td>
+                          <td>{{ $compra->proovedor->nombre }}</td>
                           <td>{{ $compra->descripcion}}</td>
                           <td>{{ $compra->total}} </td>
 

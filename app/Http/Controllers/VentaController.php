@@ -23,7 +23,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-      $ventas = Venta::all();
+      $ventas = Venta::with(['user:id,nombre', 'cliente:id,nombre', 'producto'])->get();
     //  dd($compras);
       return view('ventas.ventaIndex', compact('ventas'));
     }
@@ -93,7 +93,7 @@ class VentaController extends Controller
 
       return redirect()->route('ventas.create')->with([
                 'mensaje' => 'Venta Realizada con Exito',
-                'alert-class' => 'alert-warning',
+                'alert-class' => 'alert-success',
             ]);
     }
 

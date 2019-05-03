@@ -19,6 +19,7 @@ class CreateProovedorsTable extends Migration
           $table->string('email')->unique();
           $table->string('codigo',20)->unique();
           $table->timestamps();
+          $table->softDeletes();
         });
 
 

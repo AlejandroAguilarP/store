@@ -47,7 +47,8 @@ class ProductoController extends Controller
       $request->validate([
         'nombre' => 'required|max:255',
         'descripcion' => 'required|max:100',
-        'precio' => 'required'
+        'precio' => 'required',
+        'avatar' => 'required'
       ]);
         //
         //dd($request->all());
@@ -134,7 +135,7 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        
+
         $producto->compras()->detach();
         $producto->delete();
         return redirect()->route('productos.index')->with([

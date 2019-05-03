@@ -23,7 +23,8 @@ class CompraController extends Controller
      */
     public function index()
     {
-        $compras = Compra::all();
+      $compras = Compra::with(['user', 'proovedor'])->get();
+      //$compras = Compra::all();
       //  dd($compras);
         return view('compras.compraIndex', compact('compras'));
     }

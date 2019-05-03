@@ -26,6 +26,23 @@
       </div>
     </li>
     <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#clientes" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-account-multiple-outline"></i>
+        <span class="menu-title">Clientes</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="clientes">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('clientes.create')}}">Agregar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('clientes.index')}}">Ver</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#productos" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-archive"></i>
         <span class="menu-title">Productos</span>
@@ -82,6 +99,26 @@
         <span class="menu-title">Informacion</span>
       </a>
     </li>
+    @can('create', Auth::user())
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi-login"></i>
+        <span class="menu-title">Usuarios</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="users">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route ('users.index')}}">Ver listado</a>
+          </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
+        </ul>
+      </div>
+    </li>
+  @endcan
     <li class="nav-item">
       <a class="nav-link" href="{{route ('contacto')}}">
         <i class="menu-icon mdi mdi-send"></i>

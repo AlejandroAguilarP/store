@@ -13,10 +13,12 @@
                         Agregue sus productos
                       </p>
                       @if(isset($producto))
-                        <form  action="{{route('productos.update', $producto->id)}}" method="post" class="forms-sample">
+                        <form  action="{{route('productos.update', $producto->id)}}"enctype="multipart/form-data"
+                           method="post" class="forms-sample">
                           <input type="hidden" name="_method" value="PATCH">
                       @else
-                        <form  action="{{route('productos.store')}}" method="post" class="forms-sample">
+                        <form  action="{{route('productos.store')}}"
+                        enctype="multipart/form-data" method="post" class="forms-sample">
                       @endif
                         @csrf
                         <div class="form-group">
@@ -30,6 +32,10 @@
                         <div class="form-group">
                           <label for="precio">Precio</label>
                           <input type="text" class="form-control" name="precio" value="{{ isset($producto) ? $producto->precio : old('precio') }}" placeholder="$1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">Imagen</label>
+                            <input type="file" class="form-control"name="avatar" value="">
                         </div>
                         <button type="submit" class="btn btn-inverse-success btn-rounded btn-fw">Aceptar</button>
                       </form>

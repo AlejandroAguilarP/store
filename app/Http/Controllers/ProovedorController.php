@@ -101,7 +101,7 @@ class ProovedorController extends Controller
       $request->validate([
         'nombre' => 'required|max:255',
         'codigo' => 'required|max:10',
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:proovedors']
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:proovedors,email,'.$proovedor->id]
       ]);
         //
 
@@ -126,6 +126,7 @@ class ProovedorController extends Controller
     public function destroy(Proovedor $proovedor)
     {
         //
+        $proovedor->compras()->delete();
         $proovedor->delete();
         return redirect()->route('proovedors.index')->with([
                   'mensaje' => 'Proveedor eliminado',

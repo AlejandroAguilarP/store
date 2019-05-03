@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre','email', 'password', 'codigo',
+        'nombre','email', 'password', 'codigo', 'rol'
     ];
 
     /**
@@ -36,6 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function archivos()
+    {
+      return $this->morphMany('App\Archivo', 'imagen');
+      // code...
+    }
 
 
     public function compras()

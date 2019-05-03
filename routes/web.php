@@ -13,9 +13,11 @@
 
 
 Route::resource('productos', 'ProductoController');
-Route::resource('compras', 'CompraController');
-Route::resource('ventas', 'VentaController');
-Route::resource('proovedors', 'ProovedorController');
+Route::resource('compras', 'CompraController')->middleware('auth');
+Route::resource('ventas', 'VentaController')->middleware('auth');;
+Route::resource('proovedors', 'ProovedorController')->middleware('auth');
+Route::resource('users', 'UserController');
+Route::resource('clientes', 'ClienteController')->middleware('auth');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +25,9 @@ Route::get('/', function () {
 Route::get('/inicio', function () {
     return view('inicio');
 });
+
+//Route::get('productos/edita-cantidad/{producto}/{cantidad}', 'ProductoController@editarCantidad')->name('productos.editarCantidad');
+
 Route::get('/equipo', 'PaginasController@equipo')->name('equipo');
 
 Route::get('/info', 'PaginasController@info')->name('info');

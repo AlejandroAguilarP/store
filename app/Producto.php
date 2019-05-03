@@ -14,6 +14,13 @@ class Producto extends Model
 
     public function ventas()
     {
-      return $this->hasMany('App/Venta');
+      return $this->belongsToMany(Venta::class)->withPivot('cantidad');
+    }
+
+
+    public function archivos()
+    {
+      return $this->morphMany('App\Archivo', 'imagen');
+      // code...
     }
 }

@@ -17,7 +17,8 @@ class CreateClientesTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('email')->unique();
-            $table->string('codigo',20)->unique();
+            $table->string('direccion');
+            $table->string('ciudad');
             $table->timestamps();
         });
     }

@@ -25,13 +25,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/equipo';
 
     protected function redirectTo()
     {
       session(['apodo' => \Auth::user()->nombre]);
 
-      return '/ventas';
+      return '/productos';
     }
 
     /**

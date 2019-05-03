@@ -13,9 +13,9 @@
                       @include('partials.formErrors')
                       <h4 class="card-title">Agregar Productos</h4>
                       <p class="card-description">
-                        Compra
+                        Venta
                       </p>
-                        <form  action="{{route('compras.store')}}" method="post" class="forms-sample">
+                        <form  action="{{route('ventas.store')}}" method="post" class="forms-sample">
                         @csrf
                     <div class="table-responsive">
                       <table class="form-group" id="dynamic_field">
@@ -47,15 +47,15 @@
                       </table>
                     </div>
                         <div class="form-group">
-                          <label for="proovedor_id">Proveedor</label>
-                          <select class="form-control" name="proovedor_id" >
-                             @foreach ($prov as $prove)
-                            <option value="{{ $prove->id }}">{{$prove->nombre}}</option>
+                          <label for="cliente_id">Cliente</label>
+                          <select class="form-control" name="cliente_id" >
+                             @foreach ($cliente as $clien)
+                            <option value="{{ $clien->id }}">{{$clien->nombre}}</option>
                             @endforeach
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="descripcion">descripcion</label>
+                          <label for="descripcion">Descripcion</label>
                           <input type="text" class="form-control" name="descripcion" value="{{ old('descripcion') }}">
                         </div>
                         <button type="submit" class="btn btn-inverse-success btn-rounded btn-fw">Aceptar</button>

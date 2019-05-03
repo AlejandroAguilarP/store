@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Archivo extends Model
 {
     //
     protected $guarded = ['id'];
-    public function ventas()
+    public function imagen()
     {
-
-      return $this->hasMany('Venta');
+      return $this->morphTo();
+      // code...
     }
+
 }

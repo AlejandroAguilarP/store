@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Producto;
+use App\Archivo;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth')->except('index');
+    $this->middleware('admin')->only('destroy', 'update');
+    // code...
+  }
     /**
      * Display a listing of the resource.
      *
@@ -45,12 +52,17 @@ class ProductoController extends Controller
         //
         //dd($request->all());
         $pro = new Producto();
+      //  $request->file('avatar')->store('public');
         $pro->nombre = $request->input('nombre');
         $pro->descripcion = $request->descripcion;
         $pro->precio = $request->precio;
+        $pro->cantidad = 0;
 
         $pro->save();
 
+      //  $im = $pro->id;
+        $arch = new Archivo(['img' => $request->file('avatar')->store('public') ]);
+        $pro->archivos()->save($arch);
         return redirect()->route('productos.index')->with([
                   'mensaje' => 'Producto añadido con exito',
                   'alert-class' => 'alert-warning',
@@ -95,11 +107,17 @@ class ProductoController extends Controller
         'precio' => 'required'
       ]);
         //
+
         $producto->nombre = $request->input('nombre');
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
 
         $producto->save();
+
+        if ($request->hasFile('avatar')) {
+        //$arch =  ::where('imagen_id',$producto->id)->get(['id']);
+        Archivo::where('imagen_id', '=', $producto->id)->update(array('img' => $request->file('avatar')->store('public')));
+        }
 
         return redirect()->route('productos.show', compact('producto'))->with([
                   'mensaje' => 'Producto actualizado',
@@ -116,6 +134,7 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
+        
         $producto->compras()->detach();
         $producto->delete();
         return redirect()->route('productos.index')->with([

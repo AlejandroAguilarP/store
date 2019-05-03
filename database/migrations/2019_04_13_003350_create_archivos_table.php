@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreaTablaProductos extends Migration
+class CreateArchivosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreaTablaProductos extends Migration
      */
     public function up()
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('archivos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->integer('precio');
-            $table->integer('cantidad');
+            $table->string('img')->default('img1.jpg');
+            $table->integer('imagen_id')->unsigned();
+            $table->string('imagen_type');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreaTablaProductos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('archivos');
     }
 }

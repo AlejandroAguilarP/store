@@ -15,6 +15,8 @@ class ClienteController extends Controller
     public function index()
     {
         //
+        $clientes = Cliente::all();
+        return view ('clientes.clienteIndex', compact ('clientes'));
     }
 
     /**
@@ -25,6 +27,7 @@ class ClienteController extends Controller
     public function create()
     {
         //
+        return view('clientes.clienteForm');
     }
 
     /**
@@ -36,6 +39,18 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+          'nombre' => 'required|max:255',
+          'direccion' => 'required',
+          'ciudad' => 'required',
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:clientes']
+        ]);
+
+        Cliente::create($request->all());
+        return redirect()->route('clientes.index')->with([
+                  'mensaje' => 'Nuevo cliente agregado',
+                  'alert-class' => 'alert-warning',
+              ]);
     }
 
     /**
@@ -47,6 +62,7 @@ class ClienteController extends Controller
     public function show(Cliente $cliente)
     {
         //
+        return view('clientes.clienteShow', compact('cliente'));
     }
 
     /**
@@ -58,6 +74,7 @@ class ClienteController extends Controller
     public function edit(Cliente $cliente)
     {
         //
+        return view('clientes.clienteForm', compact('cliente'));
     }
 
     /**
@@ -70,6 +87,26 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         //
+        $request->validate([
+          'nombre' => 'required|max:255',
+          'direccion' => 'required',
+          'ciudad' => 'required',
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:clientes,email,'.$cliente->id]
+        ]);
+
+        $cliente->nombre = $request->nombre;
+        $cliente->direccion = $request->direccion;
+        $cliente->ciudad = $request->ciudad;
+        $cliente->email = $request->email;
+
+        $cliente->save();
+
+        return redirect()->route('clientes.show', compact('cliente'))->with([
+                  'mensaje' => 'Cliente actualizado',
+                  'alert-class' => 'alert-warning',
+              ]);
+
+
     }
 
     /**
@@ -81,5 +118,10 @@ class ClienteController extends Controller
     public function destroy(Cliente $cliente)
     {
         //
+        $cliente->delete();
+        return redirect()->route('clientes.index')->with([
+                  'mensaje' => 'Cliente eliminado',
+                  'alert-class' => 'alert-warning',
+              ]);
     }
 }

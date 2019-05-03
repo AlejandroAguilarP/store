@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CompraController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('admin')->only('destroy');
+    // code...
+  }
     /**
      * Display a listing of the resource.
      *
@@ -44,6 +49,12 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+        'producto_id' => 'required|max:255',
+        'descripcion' => 'required|max:100',
+        'cantidad.*' => 'required',
+        'proovedor_id.*' => 'required'
+      ]);
 
         /*
         $compra = new Compra;
@@ -55,11 +66,11 @@ class CompraController extends Controller
         $compra->total = $request->total;
 
         $compra->save();*/
-        $cantidad = [10,3,5,20,12];
+      //  $cantidad = [10,3,5,20,12];
         $i = 0;
         $total = 0;
         foreach (Producto::find($request->producto_id) as $prod){
-           $total += $prod->precio*$cantidad[$i];
+           $total += $prod->precio*$request->cantidad[$i];
            $i++;
         }
         $request->merge([
@@ -71,16 +82,21 @@ class CompraController extends Controller
 
 
         $com = Compra::create($request->except('producto_id', 'cantidad'));
+
       //  $com->producto()->attach($request->producto_id);
       $i = 0;
       foreach ($request->producto_id as $pro) {
-        $com->producto()->attach($pro, ['cantidad' => $cantidad[$i] ]);
+        $com->producto()->attach($pro, ['cantidad' => $request->cantidad[$i] ]);
+        $producto = Producto::find($pro);
+        $producto->cantidad = $producto->cantidad + $request->cantidad[$i];
+        $producto->save();
         $i++;
       }
        //$request->cantidad]);
       //  $user = User::find($request->user_id);
       //  $user->compras()->save($compra);
       //  $compra = new Compra ($request->all());
+
         return redirect()->route('compras.create')->with([
                   'mensaje' => 'Compra Exitosa',
                   'alert-class' => 'alert-warning',
@@ -130,6 +146,13 @@ class CompraController extends Controller
      */
     public function destroy(Compra $compra)
     {
+      foreach ($compra->producto as $prod)
+      {
+        $producto = Producto::find($prod->pivot->producto_id);
+        $producto->cantidad-= $prod->pivot->cantidad;
+        $producto->save();
+      }
+
       $compra->producto()->detach();
       $compra->delete();
       return redirect()->route('compras.index')->with([
@@ -137,4 +160,4 @@ class CompraController extends Controller
                 'alert-class' => 'alert-warning',
             ]);
     }
-}
+  }

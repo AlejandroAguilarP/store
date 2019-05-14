@@ -15,6 +15,7 @@ class ClienteController extends Controller
     public function index()
     {
         //
+
         $clientes = Cliente::all();
         return view ('clientes.clienteIndex', compact ('clientes'));
     }
@@ -121,7 +122,24 @@ class ClienteController extends Controller
         $cliente->delete();
         return redirect()->route('clientes.index')->with([
                   'mensaje' => 'Cliente eliminado',
-                  'alert-class' => 'alert-warning',
+                  'alert-class' => 'alert-danger',
               ]);
+    }
+
+    public function indextrash()
+    {
+      //dd('Hola');
+      $clientes = Cliente::onlyTrashed()->get();
+    //  dd($clientes);
+      return view ('clientes.clienteTrash', compact ('clientes'));
+    }
+
+    public function restore(Request $request)
+    {
+      $cliente = Cliente::withTrashed()->find($request->cliente_id)->restore();
+      return redirect()->route('clientes.trashed')->with([
+                'mensaje' => 'Cliente restaurado',
+                'alert-class' => 'alert-success',
+            ]);
     }
 }

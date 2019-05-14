@@ -15,7 +15,7 @@ class ProovedorController extends Controller
     public function index()
     {
         //
-        $proveedors = Proovedor::all();
+        $proveedors = Proovedor::paginate(5);
         return view ('proveedor.proveedorIndex', compact ('proveedors'));
     }
 
@@ -132,5 +132,22 @@ class ProovedorController extends Controller
                   'mensaje' => 'Proveedor eliminado',
                   'alert-class' => 'alert-warning',
               ]);
+    }
+
+    public function indextrash()
+    {
+      //dd('Hola');
+      $proveedors = Proovedor::onlyTrashed()->get();
+    //  dd($clientes);
+      return view ('proveedor.proveedorTrash', compact ('proveedors'));
+    }
+
+    public function restore(Request $request)
+    {
+      $pro = Proovedor::withTrashed()->find($request->proveedor_id)->restore();
+      return redirect()->route('proovedors.trashed')->with([
+                'mensaje' => 'Proveedor restaurado',
+                'alert-class' => 'alert-success',
+            ]);
     }
 }

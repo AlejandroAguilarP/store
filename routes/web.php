@@ -11,20 +11,29 @@
 |
 */
 
-
+Route::get('/productos/photo', 'ProductoController@eliminar_foto')->name('productos.photo');
 Route::resource('productos', 'ProductoController');
 Route::resource('compras', 'CompraController')->middleware('auth');
-Route::resource('ventas', 'VentaController')->middleware('auth');;
+Route::resource('ventas', 'VentaController')->middleware('auth');
+Route::get('/proovedors/trashed', 'ProovedorController@indextrash')->name('proovedors.trashed')->middleware('admin');
+Route::post('/proovedors/restore', 'ProovedorController@restore')
+  ->name('proovedors.restore')
+  ->middleware('admin');
 Route::resource('proovedors', 'ProovedorController')->middleware('auth');
 Route::resource('users', 'UserController');
+
+Route::get('/clientes/trashed', 'ClienteController@indextrash')->name('clientes.trashed')->middleware('admin');
+Route::post('/clientes/restore', 'ClienteController@restore')
+  ->name('clientes.restore')
+  ->middleware('admin');
 Route::resource('clientes', 'ClienteController')->middleware('auth');
+
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('/home');
 });
 
-Route::get('/inicio', function () {
-    return view('inicio');
-});
 
 //Route::get('productos/edita-cantidad/{producto}/{cantidad}', 'ProductoController@editarCantidad')->name('productos.editarCantidad');
 
@@ -32,9 +41,6 @@ Route::get('/equipo', 'PaginasController@equipo')->name('equipo');
 
 Route::get('/info', 'PaginasController@info')->name('info');
 
-Route::get('/contacto', 'PaginasController@contacto')->name('contacto');
-
-Route::get('/bienvenida/{nombre}/{apellido?}', 'PaginasController@bienvenida');
 
 Auth::routes();
 

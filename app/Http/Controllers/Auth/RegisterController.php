@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-      //  $this->middleware('guest');
+        $this->middleware('admin');
     }
 
     /**
@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      
+
       if($data['avatar'] != null)
       {
       $arch = new Archivo(['img' => $data['avatar']->store('public') ]);

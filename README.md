@@ -1,12 +1,12 @@
 # Tienda en linea
 
-Pagina gestora de ventas en linea de articulos variados
+Pagina gestora de compras y ventas en linea de articulos variados para los empleados.
 
 # Instalacion
 1. git clone https://github.com/AlejandroAguilarP/store.git
 2. cd store
 3. cp .env.example .env
-4. php artisan ket:generate
+4. php artisan key:generate
 
 # Autores
 

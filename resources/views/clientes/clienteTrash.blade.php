@@ -12,7 +12,7 @@
            <table class="table table-hover">
              <thead>
                <tr>
-                 <th>ID</th>
+                 <th>Accion</th>
                  <th>Nombre</th>
                  <th>Direccion</th>
                  <th>Ciudad</th>
@@ -23,10 +23,14 @@
                @foreach ($clientes as $cliente)
                <tr>
 
-                <td align="center" >
-                   <a class= "btn btn-icons btn-rounded btn-inverse-info" href="{{route ('clientes.show', $cliente->id)}}">{{ $cliente->id}}</a>
+                <td >
+                  <form action="{{ route('clientes.restore') }}" method="POST">
+                      <input type="hidden" name="cliente_id" value="{{ $cliente->id }}">
+                      @csrf
+                      <button type="submit" class="btn btn-sm btn-danger">Restaurar</button>
+                  </form>
                 </td>
-                <td>{{ $cliente->nombre_cliente}} </td>
+                <td>{{ $cliente->nombre}} </td>
                 <td>{{ $cliente->direccion}}</td>
                 <td>{{ $cliente->ciudad}}</td>
                 <td>{{ $cliente->email}}</td>

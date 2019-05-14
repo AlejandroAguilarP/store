@@ -18,4 +18,15 @@ class Cliente extends Model
     }
 
     protected $dates = ['deleted_at'];
+
+    public function getNombreClienteAttribute() //Accessor
+    {
+      // code...
+      return ucfirst($this->nombre. ' - '.$this->id);
+    }
+
+    public function setDireccionAttribute($direccion) //Mutator
+    {
+      $this->attributes['direccion'] = strtoupper($direccion);
+    }
 }

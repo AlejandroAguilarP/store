@@ -12,7 +12,6 @@
            <table class="table table-hover">
              <thead>
                <tr>
-                 <th>Id</th>
                  <th>Nombre</th>
                  <th>Codigo</th>
                  <th>Email</th>
@@ -22,19 +21,20 @@
              <tbody>
                      @foreach ($proveedors as $proveedor)
                        <tr>
-                         <td>{{ $proveedor->id}}</td>
                          <td>{{ $proveedor->nombre}}</td>
                          <td>{{ $proveedor->codigo}}</td>
                          <td>{{ $proveedor->email}}</td>
                          <td>
-                           <a class= "btn btn-inverse-success btn-rounded btn-fw" href="{{route ('proovedors.show', $proveedor->id)}}">Detalle</a>
+                           <form action="{{ route('proovedors.restore') }}" method="POST">
+                               <input type="hidden" name="proveedor_id" value="{{ $proveedor->id }}">
+                               @csrf
+                               <button type="submit" class="btn btn-sm btn-danger">Restaurar</button>
+                           </form>
                          </td>
                        </tr>
                      @endforeach
-
                    </tbody>
          </table>
-         {{ $proveedors -> links()}}
         </div>
        </div>
       </div>

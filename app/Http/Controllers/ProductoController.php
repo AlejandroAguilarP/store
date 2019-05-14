@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\Archivo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-      $productos = Producto::all();
+      $productos = Producto::paginate(5);
       return view ('productos.productosIndex', compact ('productos'));
       //  return view('productos.productosIndex');
     }
@@ -115,9 +116,18 @@ class ProductoController extends Controller
 
         $producto->save();
 
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar'))
+        {
         //$arch =  ::where('imagen_id',$producto->id)->get(['id']);
-        Archivo::where('imagen_id', '=', $producto->id)->update(array('img' => $request->file('avatar')->store('public')));
+        //dd($producto->archivos);
+          if($producto->archivos->count() > 0)
+          {
+              Archivo::where('imagen_id', '=', $producto->id)->update(array('img' => $request->file('avatar')->store('public')));
+            }
+            else {
+              $arch = new Archivo(['img' => $request->file('avatar')->store('public') ]);
+              $producto->archivos()->save($arch);
+            }
         }
 
         return redirect()->route('productos.show', compact('producto'))->with([
@@ -135,12 +145,27 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-
+      foreach ($producto->archivos as $img)
+      {  //  Storage::delete($img->img);
+        $img->delete();
+      }
         $producto->compras()->detach();
         $producto->delete();
         return redirect()->route('productos.index')->with([
                   'mensaje' => 'Producto eliminado',
                   'alert-class' => 'alert-warning',
               ]);
+    }
+
+    public function eliminar_foto(Producto $producto)
+    {
+      foreach ($producto->archivos as $img)
+      {  //  Storage::delete($img->img);
+        $img->delete();
+      }
+      return redirect()->route('productos.show', compact('producto'))->with([
+                'mensaje' => 'Producto actualizado',
+                'alert-class' => 'alert-warning',
+            ]);
     }
 }

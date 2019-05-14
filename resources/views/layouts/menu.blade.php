@@ -119,37 +119,24 @@
       </div>
     </li>
   @endcan
-    <li class="nav-item">
-      <a class="nav-link" href="{{route ('contacto')}}">
-        <i class="menu-icon mdi mdi-send"></i>
-        <span class="menu-title">Contacto</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-        <i class="menu-icon mdi mdi-restart"></i>
-        <span class="menu-title">User Pages</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="auth">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Blank Page </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Login </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Register </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> 404 </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> 500 </a>
-          </li>
-        </ul>
-      </div>
-    </li>
+  @can('create', Auth::user())
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#restore" aria-expanded="false" aria-controls="ui-basic">
+      <i class="menu-icon mdi mdi-keyboard-return"></i>
+      <span class="menu-title">Restaurar</span>
+      <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="restore">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item">
+          <a class="nav-link" href="{{route ('clientes.trashed')}}">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route ('proovedors.trashed')}}">Proveedores</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+@endcan
   </ul>
 </nav>

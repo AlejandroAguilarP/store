@@ -18,31 +18,44 @@
                </div>
               </div>
               <p class="row">
-              <p>
-                Descripcion: <br> <br>
-                {{ $producto->descripcion }}
-                <hr>
-              </p>
-              <p>
-                Precio: <br> <br>
-                ${{ $producto->precio }}
-                <hr>
-              </p>
-              <p>
-                Cantidad: <br> <br>
-                {{ $producto->cantidad }}
-                <hr>
-              </p>
-              <p class="row">
-              <div class="form-control">
-                <a class="btn btn-inverse-warning btn-rounded btn-fw" href="{{ route ('productos.edit', $producto->id)}}">Editar</a>
+              <div class="media">
+                <i class=" mdi mdi-comment-text icon-md text-dark d-flex align-self-start mr-3"></i>
+                <div class="media-body">
+                  <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    Descripcion: <br>
+                    {{ $producto->descripcion }}</p>
+                </div>
               </div>
-              <div class="form-control">
-                <form class="forms-sample" action="{{route('productos.destroy', $producto->id )}}" method="post">
-                  <input type="hidden" name="_method" value="DELETE">
-                 @csrf
-                <button class="btn btn-inverse-danger btn-rounded btn-fw" name="button"> Borrar</button>
-                </form>
+              <div class="media">
+                <i class=" mdi mdi-cash-multiple icon-md text-success d-flex align-self-start mr-3"></i>
+                <div class="media-body">
+                  <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    Precio: <br>
+                    ${{ $producto->precio }}</p>
+                </div>
+              </div>
+              <div class="media">
+                <i class=" mdi mdi-sort-numeric icon-md text-warning d-flex align-self-start mr-3"></i>
+                <div class="media-body">
+                  <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    Cantidad: <br>
+                    {{ $producto->cantidad }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <a class="btn btn-inverse-warning btn-rounded btn-fw" href="{{ route ('productos.edit', $producto->id)}}">Editar</a>
+                </div>
+                <div class="col-3">
+                  <a class="btn btn-inverse-info btn-rounded btn-fw" href="{{ route ('productos.photo', $producto->id)}}">Eliminar Imagen</a>
+                </div>
+                <div class="col-3">
+                  <form class="forms-sample" action="{{route('productos.destroy', $producto->id )}}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                   @csrf
+                  <button class="btn btn-inverse-danger btn-rounded btn-fw" name="button"> Borrar</button>
+                  </form>
+                </div>
               </div>
             </p>
           </p>

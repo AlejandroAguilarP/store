@@ -71,7 +71,7 @@ class CompraController extends Controller
         $i = 0;
         $total = 0;
         foreach (Producto::find($request->producto_id) as $prod){
-           $total += $prod->precio*$request->cantidad[$i];
+           $total += ($prod->precio*$request->cantidad[$i])*0.8;
            $i++;
         }
         $request->merge([

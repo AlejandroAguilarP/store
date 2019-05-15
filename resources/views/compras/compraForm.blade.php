@@ -37,7 +37,7 @@
 
                         <td class="col-md-4">
                           <!--<label for="cantidad">cantidad</label>-->
-                          <input type="text" class="form-control" name="cantidad[]" value="">
+                          <input type="number" class="form-control" name="cantidad[]" value="">
                         </td>
                       <td class="col-md-6">
                       <button type="button" name="add" id="add" class="btn btn-icons btn-rounded btn-success">+</button>
@@ -75,7 +75,7 @@
 
       $('#add').click(function(){
            i++;
-           $('#dynamic_field').append('<tr id="row'+i+'"><td class="col-md-6"><select class="form-control" name="producto_id[]">@foreach($pro as $prod)<option value="{{ $prod->id }}">{{$prod->nombre}}</option>@endforeach</option></td><td class="col-md-6"> <input type="text" class="form-control" name="cantidad[]" value=""></td><td class="form-group col-md-6"><button type="button" name="remove" id="'+i+'" class="btn btn-icons btn-rounded btn-inverse-danger btn_remove">x</button></td></tr>');
+           $('#dynamic_field').append('<tr id="row'+i+'"><td class="col-md-6"><select class="form-control" name="producto_id[]">@foreach($pro as $prod)<option value="{{ $prod->id }}">{{$prod->nombre}}</option>@endforeach</option></td><td class="col-md-6"> <input type="number" class="form-control" name="cantidad[]" value=""></td><td class="form-group col-md-6"><button type="button" name="remove" id="'+i+'" class="btn btn-icons btn-rounded btn-inverse-danger btn_remove">x</button></td></tr>');
       });
 
 

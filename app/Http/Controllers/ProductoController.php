@@ -150,6 +150,7 @@ class ProductoController extends Controller
         $img->delete();
       }
         $producto->compras()->detach();
+          $producto->ventas()->detach();
         $producto->delete();
         return redirect()->route('productos.index')->with([
                   'mensaje' => 'Producto eliminado',
@@ -167,5 +168,11 @@ class ProductoController extends Controller
                 'mensaje' => 'Producto actualizado',
                 'alert-class' => 'alert-warning',
             ]);
+    }
+
+    public function inventarios()
+    {
+      $productos = Producto::Inventario()->orderBy('cantidad','desc')->paginate(5);
+      return view ('productos.productosIndex', compact ('productos'));
     }
 }

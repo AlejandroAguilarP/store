@@ -23,4 +23,9 @@ class Producto extends Model
       return $this->morphMany('App\Archivo', 'imagen');
       // code...
     }
+
+    public function scopeInventario($query)
+    {
+        return $query->where('cantidad', '>=', 1);
+    }
 }

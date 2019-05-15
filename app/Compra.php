@@ -22,4 +22,5 @@ class Compra extends Model
     {
       return $this->belongsTo(Proovedor::class)->withTrashed ();
     }
+
 }

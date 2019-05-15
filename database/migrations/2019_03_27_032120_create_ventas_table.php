@@ -34,7 +34,7 @@ class CreateVentasTable extends Migration
           $table->integer('cantidad');
         //  $table->string('comentarios');
 
-          $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
+          $table->foreign('producto_id')->references('id')->on('productos');
           $table->foreign('venta_id')->references('id')->on('ventas');
         });
     }

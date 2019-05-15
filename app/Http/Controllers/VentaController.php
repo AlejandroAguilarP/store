@@ -13,6 +13,7 @@ class VentaController extends Controller
 {
   public function __construct()
   {
+    $this->middleware('auth');
     $this->middleware('admin')->only('destroy');
     // code...
   }
@@ -154,5 +155,21 @@ class VentaController extends Controller
                   'mensaje' => 'Venta eliminada',
                   'alert-class' => 'alert-warning',
               ]);
+      }
+
+      public function reporte()
+      {
+        $ventas = Venta::whereHas('user',function ($query) {
+            $query->where('id', '=', \Auth::id());
+        })->get();
+
+      $total = Venta::where('user_id', '=', \Auth::id())->sum('total');
+
+      $totales = Venta::sum('total');
+
+      $porcentaje = $total*100/$totales;
+
+        return view('ventas.ventaReporte', compact('ventas', 'total', 'totales', 'porcentaje'));
+        // code...
       }
 }

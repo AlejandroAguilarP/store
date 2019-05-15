@@ -36,11 +36,11 @@
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item active">
-            <a href="#" class="nav-link">
-              <i class="mdi mdi-elevation-rise"></i>Reportes</a>
+            <a href="{{route('ventas.reporte')}}" class="nav-link">
+              <i class="mdi mdi-elevation-rise"></i>Reportes de ventas</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('productos.inventarios') }}" class="nav-link">
               <i class="mdi mdi-bookmark-plus-outline"></i>Inventario</a>
           </li>
         </ul>

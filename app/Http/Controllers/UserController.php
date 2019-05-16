@@ -50,7 +50,8 @@ class UserController extends Controller
       'codigo' => ['required', 'string', 'max:20', 'unique:users'],
       'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
       'password' => ['required', 'string', 'min:6', 'confirmed'],
-      'avatar' => ['required']
+      'avatar' => ['required'],
+      'rol' => ['required']
     ]);
         //
         if($request->hasFile('avatar'))
@@ -63,7 +64,7 @@ class UserController extends Controller
               'codigo' => $request->codigo,
               'email' => $request->email,
               'password' => Hash::make($request->password),
-              'rol' => 'Usuario'
+              'rol' => $request->rol,
           ]);
           $user->archivos()->save($arch);
           return redirect()->route('users.index')->with([

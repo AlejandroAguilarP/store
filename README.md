@@ -1,6 +1,6 @@
 # Tienda en linea
 
-Pagina gestora de compras y ventas en linea de articulos variados para los empleados.
+Pagina gestora de compras y ventas en linea de articulos variados.
 
 # Instalacion
 1. git clone https://github.com/AlejandroAguilarP/store.git

@@ -161,15 +161,18 @@ class VentaController extends Controller
       {
         $ventas = Venta::whereHas('user',function ($query) {
             $query->where('id', '=', \Auth::id());
-        })->get();
+        })->get(); //constraining eager load
 
-      $total = Venta::where('user_id', '=', \Auth::id())->sum('total');
+        $total = Venta::where('user_id', '=', \Auth::id())->sum('total');
 
-      $totales = Venta::sum('total');
+        $totales = Venta::sum('total');
 
-      $porcentaje = $total*100/$totales;
-
-        return view('ventas.ventaReporte', compact('ventas', 'total', 'totales', 'porcentaje'));
-        // code...
+        $porcentaje = 0;
+        if($total > 0 && $totales > 0)
+        {
+          $porcentaje = $total*100/$totales;
+        }
+          return view('ventas.ventaReporte', compact('ventas', 'total', 'totales', 'porcentaje'));
+          // code...
       }
 }

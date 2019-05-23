@@ -161,11 +161,12 @@ class ProductoController extends Controller
     public function eliminar_foto(Producto $producto)
     {
       foreach ($producto->archivos as $img)
-      {  Storage::delete($img->img);
+      {
+        Storage::delete($img->img);
         $img->delete();
       }
       return redirect()->route('productos.show', compact('producto'))->with([
-                'mensaje' => 'Producto actualizado',
+                'mensaje' => 'Foto eliminada',
                 'alert-class' => 'alert-warning',
             ]);
     }

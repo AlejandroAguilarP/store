@@ -47,7 +47,7 @@
                   <a class="btn btn-inverse-warning btn-rounded btn-fw" href="{{ route ('productos.edit', $producto->id)}}">Editar</a>
                 </div>
                 <div class="col-3">
-                  <a class="btn btn-inverse-info btn-rounded btn-fw" href="{{ route ('productos.photo', $producto->id)}}">Eliminar Imagen</a>
+                  <a class="btn btn-inverse-info btn-rounded btn-fw" href="{{ route ('productos.photo', [$producto->id])}}">Eliminar Imagen</a>
                 </div>
                 <div class="col-3">
                   <form class="forms-sample" action="{{route('productos.destroy', $producto->id )}}" method="post">

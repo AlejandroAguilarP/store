@@ -11,7 +11,7 @@
 |
 */
 Route::get('/productos/inventario', 'ProductoController@inventarios')->name('productos.inventarios');
-Route::get('/productos/photo', 'ProductoController@eliminar_foto')->name('productos.photo');
+Route::get('/productos/photo/{producto}', 'ProductoController@eliminar_foto')->name('productos.photo');
 Route::resource('productos', 'ProductoController');
 Route::resource('compras', 'CompraController')->middleware('auth');
 Route::get('/ventas/reporte', 'VentaController@reporte')->name('ventas.reporte');
